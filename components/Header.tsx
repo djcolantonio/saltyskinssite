@@ -20,7 +20,7 @@ export default function Header() {
           Salty Skins
         </Link>
         <nav className="mt-4 w-full md:mt-0 md:w-auto">
-          <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink">
+          <ul className="flex flex-wrap gap-x-7 gap-y-2 text-base text-ink">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link href={link.href} className="hover:text-sand transition-colors">

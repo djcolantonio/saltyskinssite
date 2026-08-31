@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { Resend } from "resend";
 
-// TODO: wire this up to a real email service once Daniel picks one
-// (Resend is a good free-tier fit for Next.js/Vercel — https://resend.com).
-// For now this just validates the payload and logs it so nothing is lost
-// while the email piece is being connected.
+const TO_EMAIL = "ssyogaretreats@gmail.com";
+const FROM_EMAIL = "Salty Skins Website <notifications@ssyogaretreats.com>";
+
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
 
@@ -21,8 +21,32 @@ export async function POST(req: NextRequest) {
     receivedAt: new Date().toISOString(),
   });
 
-  // Once an email service (e.g. Resend) is configured, send a notification to
-  // ssyogaretreats@gmail.com here, and/or POST it into the CRM as a lead.
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.log("[Resend] Not configured yet — email not sent, submission logged above only.");
+    return NextResponse.json({ ok: true });
+  }
+
+  try {
+    const resend = new Resend(apiKey);
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: TO_EMAIL,
+      replyTo: body.email,
+      subject: `New contact form message from ${body.name}`,
+      text: [
+        `Name: ${body.name}`,
+        `Email: ${body.email}`,
+        "",
+        "Message:",
+        body.message || "(no message provided)",
+      ].join("\n"),
+    });
+  } catch (err) {
+    // Don't fail the request just because the notification email failed —
+    // the submission is already logged above so nothing is lost.
+    console.error("[Resend] Failed to send contact notification:", err);
+  }
 
   return NextResponse.json({ ok: true });
 }

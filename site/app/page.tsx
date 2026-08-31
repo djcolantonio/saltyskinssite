@@ -1,12 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[640px] items-center justify-center overflow-hidden bg-gradient-to-b from-sea to-ink text-center text-white">
-        {/* TODO: replace with real hero photo from the current site */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_60%)]" />
+      <section className="relative flex min-h-[640px] items-center justify-center overflow-hidden text-center text-white">
+        <Image
+          src="https://ssyogaretreats.com/wp-content/uploads/2026/02/kristine-zale-macro-viewpoint-EZT6qusWOBQ-unsplash-3-1024x768.jpg"
+          alt="Amalfi Coast"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/30" />
         <div className="relative z-10 mx-auto max-w-2xl px-6 py-24">
           <p className="label-caps mb-4">Salty Skins Retreats</p>
           <h1 className="font-serif text-5xl font-light leading-tight md:text-6xl">
@@ -33,22 +40,32 @@ export default function HomePage() {
       </section>
 
       {/* Philosophy */}
-      <section className="mx-auto max-w-3xl px-6 py-24 text-center">
-        <p className="label-caps mb-4">Our Philosophy</p>
-        <h2 className="font-serif text-4xl font-light">
-          Not a getaway.
-          <br />
-          <span className="italic">A Return.</span>
-        </h2>
-        <p className="mx-auto mt-6 max-w-xl text-ink/80">
-          Salty Skins Retreats are curated experiences rooted in movement,
-          ritual, and refined coastal living. This is where clarity deepens,
-          connection strengthens, and something quietly shifts.
-        </p>
-        <p className="mt-2 text-ink/80">Come as you are. Leave a little more you.</p>
-        <Link href="/el-salvador-recap" className="btn-outline mt-8">
-          Explore Our Last Retreat
-        </Link>
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
+        <div className="relative aspect-[4/5] w-full overflow-hidden">
+          <Image
+            src="https://ssyogaretreats.com/wp-content/uploads/2026/03/DSC00745.jpg"
+            alt="Salty Skins community"
+            fill
+            className="object-cover"
+          />
+        </div>
+        <div>
+          <p className="label-caps mb-4">Our Philosophy</p>
+          <h2 className="font-serif text-4xl font-light">
+            Not a getaway.
+            <br />
+            <span className="italic">A Return.</span>
+          </h2>
+          <p className="mt-6 text-ink/80">
+            Salty Skins Retreats are curated experiences rooted in movement,
+            ritual, and refined coastal living. This is where clarity deepens,
+            connection strengthens, and something quietly shifts.
+          </p>
+          <p className="mt-2 text-ink/80">Come as you are. Leave a little more you.</p>
+          <Link href="/el-salvador-recap" className="btn-outline mt-8">
+            Explore Our Last Retreat
+          </Link>
+        </div>
       </section>
 
       {/* Upcoming Retreats */}
@@ -65,6 +82,7 @@ export default function HomePage() {
               date="August 2026"
               status="SOLD OUT"
               href="/2026-italy-retreat"
+              image="https://ssyogaretreats.com/wp-content/uploads/2026/02/italy-cartoon-thumbnail.png"
             />
             <RetreatCard
               eyebrow="United States · Northeast"
@@ -72,6 +90,7 @@ export default function HomePage() {
               date="Date TBA"
               status="COMING SOON"
               href="/application"
+              image="https://ssyogaretreats.com/wp-content/uploads/2026/04/upstate.jpg"
             />
             <RetreatCard
               eyebrow="Central America · Pacific Coast"
@@ -79,6 +98,7 @@ export default function HomePage() {
               date="February 6–11, 2027"
               status="EARLY ACCESS"
               href="/application"
+              image="https://ssyogaretreats.com/wp-content/uploads/2026/02/el-salvador-thumbnail-cartoon.png"
             />
           </div>
         </div>
@@ -139,24 +159,31 @@ function RetreatCard({
   date,
   status,
   href,
+  image,
 }: {
   eyebrow: string;
   title: string;
   date: string;
   status: string;
   href: string;
+  image: string;
 }) {
   return (
     <Link
       href={href}
-      className="block border border-black/10 bg-cream p-8 text-center transition-shadow hover:shadow-lg"
+      className="block overflow-hidden border border-black/10 bg-cream text-center transition-shadow hover:shadow-lg"
     >
-      <p className="label-caps mb-3">{eyebrow}</p>
-      <h3 className="font-serif text-2xl">{title}</h3>
-      <p className="mt-1 text-sm text-ink/70">{date}</p>
-      <p className="mt-4 text-xs font-medium tracking-widest2 text-sandDark">
-        {status}
-      </p>
+      <div className="relative aspect-[4/3] w-full">
+        <Image src={image} alt={title} fill className="object-cover" />
+      </div>
+      <div className="p-8">
+        <p className="label-caps mb-3">{eyebrow}</p>
+        <h3 className="font-serif text-2xl">{title}</h3>
+        <p className="mt-1 text-sm text-ink/70">{date}</p>
+        <p className="mt-4 text-xs font-medium tracking-widest2 text-sandDark">
+          {status}
+        </p>
+      </div>
     </Link>
   );
 }

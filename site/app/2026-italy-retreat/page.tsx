@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const included = [
@@ -49,17 +50,27 @@ const experiences = [
 export default function ItalyRetreatPage() {
   return (
     <div>
-      <section className="bg-sea px-6 py-24 text-center text-white">
-        <p className="label-caps mb-4">Salty Skins Retreats · Italy</p>
-        <h1 className="font-serif text-4xl font-light md:text-5xl">
-          Furore, Amalfi Coast
-        </h1>
-        <p className="mt-4 text-white/80">
-          5 nights · 6 days · August 22–27, 2026
-        </p>
-        <p className="mt-6 inline-block border border-sand px-4 py-1 text-xs tracking-widest2 text-sand">
-          SOLD OUT
-        </p>
+      <section className="relative overflow-hidden px-6 py-24 text-center text-white">
+        <Image
+          src="https://ssyogaretreats.com/wp-content/uploads/2026/03/Gemini_Generated_Image_w04mpw04mpw04mpw.png"
+          alt="Furore, Amalfi Coast"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-sea/70" />
+        <div className="relative z-10">
+          <p className="label-caps mb-4">Salty Skins Retreats · Italy</p>
+          <h1 className="font-serif text-4xl font-light md:text-5xl">
+            Furore, Amalfi Coast
+          </h1>
+          <p className="mt-4 text-white/80">
+            5 nights · 6 days · August 22–27, 2026
+          </p>
+          <p className="mt-6 inline-block border border-sand px-4 py-1 text-xs tracking-widest2 text-sand">
+            SOLD OUT
+          </p>
+        </div>
       </section>
 
       <section className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-6 py-16 text-center sm:grid-cols-5">
@@ -88,6 +99,14 @@ export default function ItalyRetreatPage() {
           Pilates sessions, exploring hidden coastal gems, and savoring the
           effortless magic of Italy&rsquo;s most iconic coastline.
         </p>
+        <div className="mt-12 grid gap-4 sm:grid-cols-2">
+          <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <Image src="https://ssyogaretreats.com/wp-content/uploads/2026/03/FCAC20CE-3301-449A-9B18-A8C97C39D8F2.jpeg" alt="Amalfi Coast" fill className="object-cover" />
+          </div>
+          <div className="relative aspect-[4/5] w-full overflow-hidden">
+            <Image src="https://ssyogaretreats.com/wp-content/uploads/2026/03/95072428-C617-48E0-BB83-F147D0FD6C4E.jpeg" alt="Italy Retreat" fill className="object-cover" />
+          </div>
+        </div>
       </section>
 
       <section className="bg-white/60 py-16">

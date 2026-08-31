@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutPage() {
@@ -11,6 +12,15 @@ export default function AboutPage() {
         Two soul sisters with a shared love for movement, connection, and
         sunshine — the hearts behind every Salty Skins retreat.
       </p>
+
+      <div className="relative mx-auto mt-12 aspect-[16/10] w-full max-w-2xl overflow-hidden">
+        <Image
+          src="https://ssyogaretreats.com/wp-content/uploads/2025/05/km-sitting-1.jpg"
+          alt="Karina and Marci"
+          fill
+          className="object-cover"
+        />
+      </div>
 
       <div className="mt-16">
         <h2 className="font-serif text-2xl">Who We Are</h2>
@@ -30,7 +40,15 @@ export default function AboutPage() {
         <p className="label-caps">The Team</p>
         <div className="mt-8 grid gap-12 md:grid-cols-2">
           <div>
-            <p className="text-xs tracking-widest2 text-sandDark">
+            <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <Image
+                src="https://ssyogaretreats.com/wp-content/uploads/2025/05/marci-red.jpg"
+                alt="Marci Catala"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-4 text-xs tracking-widest2 text-sandDark">
               RETREAT HOST &amp; LEAD INSTRUCTOR
             </p>
             <h3 className="mt-2 font-serif text-2xl">Marci Catala</h3>
@@ -44,7 +62,15 @@ export default function AboutPage() {
             </p>
           </div>
           <div>
-            <p className="text-xs tracking-widest2 text-sandDark">
+            <div className="relative aspect-[3/4] w-full overflow-hidden">
+              <Image
+                src="https://ssyogaretreats.com/wp-content/uploads/2025/05/karina-prayer.jpeg"
+                alt="Karina Blackstone"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <p className="mt-4 text-xs tracking-widest2 text-sandDark">
               RETREAT HOST &amp; STUDIO OWNER
             </p>
             <h3 className="mt-2 font-serif text-2xl">Karina Blackstone</h3>

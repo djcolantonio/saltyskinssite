@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f6f4ee;
+  color: #26302b;
+}
+
+.label-caps {
+  @apply text-xs tracking-widest2 uppercase text-sand;
+}
+
+.btn-outline {
+  @apply inline-block border border-sand px-6 py-3 text-xs tracking-widest2 uppercase text-ink hover:bg-sand hover:text-white transition-colors;
+}
+
+.btn-solid {
+  @apply inline-block bg-sand px-6 py-3 text-xs tracking-widest2 uppercase text-white hover:bg-sandDark transition-colors;
+}

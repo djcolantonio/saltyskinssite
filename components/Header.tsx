@@ -13,10 +13,11 @@ export default function Header() {
   return (
     <header className="w-full bg-cream">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between px-6 py-6">
-        <Link href="/" className="font-serif text-2xl leading-tight tracking-wide text-ink">
-          SALTY
-          <br />
-          SKINS
+        <Link
+          href="/"
+          className="whitespace-nowrap font-serif text-2xl leading-tight tracking-wide text-ink"
+        >
+          Salty Skins
         </Link>
         <nav className="mt-4 w-full md:mt-0 md:w-auto">
           <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink">

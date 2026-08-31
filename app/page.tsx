@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SubscribeForm from "@/components/SubscribeForm";
 
 export default function HomePage() {
   return (
@@ -25,28 +26,18 @@ export default function HomePage() {
             Immersive experiences rooted in movement, ritual, and the wild
             beauty of the world.
           </p>
-          <form className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              required
-              placeholder="Your email address..."
-              className="flex-1 border border-white/30 bg-white/10 px-4 py-3 text-sm text-white placeholder-white/60 outline-none"
-            />
-            <button type="submit" className="btn-solid">
-              Subscribe
-            </button>
-          </form>
+          <SubscribeForm />
         </div>
       </section>
 
       {/* Philosophy */}
-      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
-        <div className="relative aspect-[4/5] w-full overflow-hidden">
+      <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2">
+        <div className="relative aspect-[5/4] w-full overflow-hidden bg-ink/5">
           <Image
             src="https://ssyogaretreats.com/wp-content/uploads/2026/03/DSC00745.jpg"
             alt="Salty Skins community"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
         <div>
@@ -69,7 +60,7 @@ export default function HomePage() {
       </section>
 
       {/* Upcoming Retreats */}
-      <section className="bg-white/60 py-24">
+      <section className="bg-sandLight py-24">
         <div className="mx-auto max-w-6xl px-6">
           <p className="label-caps mb-2 text-center">Upcoming Retreats</p>
           <h2 className="text-center font-serif text-4xl font-light">
@@ -97,28 +88,36 @@ export default function HomePage() {
       </section>
 
       {/* Pillars */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <div className="grid gap-12 md:grid-cols-3">
-          <Pillar
-            number="01"
-            title="Movement"
-            body="Yoga, Pilates, dance, and free exploration — every day begins and ends in the body."
-          />
-          <Pillar
-            number="02"
-            title="Ritual"
-            body="Intentional practices that ground you, open you, and bring you back to what matters."
-          />
-          <Pillar
-            number="03"
-            title="Connection"
-            body="Strangers become community. Every retreat creates bonds that last beyond the mat."
-          />
+      <section className="bg-ink py-28 text-cream">
+        <div className="mx-auto max-w-6xl px-6">
+          <p className="label-caps mb-2 text-center">What You Receive</p>
+          <h2 className="text-center font-serif text-4xl font-light">
+            Everything the Retreat Gives You
+          </h2>
+          <div className="mt-16 grid gap-12 sm:grid-cols-3">
+            <Pillar
+              number="01"
+              title="Movement"
+              body="Yoga, Pilates, dance, and free exploration — every day begins and ends in the body."
+            />
+            <Pillar
+              number="02"
+              title="Ritual"
+              body="Intentional practices that ground you, open you, and bring you back to what matters."
+              divider
+            />
+            <Pillar
+              number="03"
+              title="Connection"
+              body="Strangers become community. Every retreat creates bonds that last beyond the mat."
+              divider
+            />
+          </div>
         </div>
       </section>
 
       {/* Testimonial */}
-      <section className="bg-sea py-20 text-center text-white">
+      <section className="border-t border-sand/20 bg-sea py-20 text-center text-white">
         <blockquote className="mx-auto max-w-2xl px-6 font-serif text-2xl font-light italic">
           &ldquo;This wasn&rsquo;t just a trip. It was the reset I didn&rsquo;t
           know I needed — and the community I didn&rsquo;t know I was
@@ -128,18 +127,20 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-2xl px-6 py-24 text-center">
-        <h2 className="font-serif text-3xl font-light">
-          Ready to go deeper?
-        </h2>
-        <p className="mt-2 text-ink/80">Your next chapter starts here.</p>
-        <p className="mt-4 text-ink/70">
-          Limited spots available for our upcoming retreats. Apply early to
-          secure your place.
-        </p>
-        <Link href="/application" className="btn-solid mt-8">
-          View All Retreats
-        </Link>
+      <section className="bg-sandLight py-16 text-center">
+        <div className="mx-auto max-w-2xl px-6">
+          <h2 className="font-serif text-3xl font-light">
+            Ready to go deeper?
+          </h2>
+          <p className="mt-2 text-ink/80">Your next chapter starts here.</p>
+          <p className="mt-4 text-ink/70">
+            Limited spots available for our upcoming retreats. Apply early to
+            secure your place.
+          </p>
+          <Link href="/application" className="btn-solid mt-8">
+            View All Retreats
+          </Link>
+        </div>
       </section>
     </>
   );
@@ -184,16 +185,18 @@ function Pillar({
   number,
   title,
   body,
+  divider,
 }: {
   number: string;
   title: string;
   body: string;
+  divider?: boolean;
 }) {
   return (
-    <div>
-      <p className="font-serif text-3xl text-sand">{number}</p>
-      <h3 className="mt-2 font-serif text-2xl">{title}</h3>
-      <p className="mt-3 text-sm text-ink/70">{body}</p>
+    <div className={divider ? "sm:border-l sm:border-cream/15 sm:pl-10" : ""}>
+      <p className="font-serif text-4xl text-sand">{number}</p>
+      <h3 className="mt-3 font-serif text-2xl">{title}</h3>
+      <p className="mt-3 text-sm text-cream/70">{body}</p>
     </div>
   );
 }

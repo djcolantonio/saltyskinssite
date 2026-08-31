@@ -8,7 +8,6 @@ export default function Footer() {
         <ul className="flex flex-wrap justify-center gap-x-6 gap-y-2">
           <li><Link href="/">Home</Link></li>
           <li><Link href="/about">About</Link></li>
-          <li><Link href="/2026-italy-retreat">2026 Italy Retreat</Link></li>
           <li><Link href="/el-salvador-recap">El Salvador Recap</Link></li>
           <li><Link href="/application">Application</Link></li>
           <li><Link href="/contact">Contact</Link></li>

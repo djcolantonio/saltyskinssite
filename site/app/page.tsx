@@ -75,15 +75,7 @@ export default function HomePage() {
           <h2 className="text-center font-serif text-4xl font-light">
             Where Are We Going Next?
           </h2>
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            <RetreatCard
-              eyebrow="Europe · Mediterranean"
-              title="Italy"
-              date="August 2026"
-              status="SOLD OUT"
-              href="/2026-italy-retreat"
-              image="https://ssyogaretreats.com/wp-content/uploads/2026/02/italy-cartoon-thumbnail.png"
-            />
+          <div className="mt-14 grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
             <RetreatCard
               eyebrow="United States · Northeast"
               title="Upstate, NY"

@@ -3,7 +3,6 @@ import Link from "next/link";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/2026-italy-retreat", label: "2026 Italy Retreat" },
   { href: "/el-salvador-recap", label: "El Salvador Recap" },
   { href: "/application", label: "Application" },
   { href: "/contact", label: "Contact" },

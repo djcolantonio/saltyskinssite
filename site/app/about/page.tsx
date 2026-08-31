@@ -96,7 +96,7 @@ export default function AboutPage() {
           experience the magic for yourself.
         </p>
         <div className="mt-8 flex justify-center gap-4">
-          <Link href="/2026-italy-retreat" className="btn-solid">
+          <Link href="/application" className="btn-solid">
             View Retreats
           </Link>
           <Link href="/contact" className="btn-outline">

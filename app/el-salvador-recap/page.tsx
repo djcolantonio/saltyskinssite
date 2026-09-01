@@ -1,21 +1,19 @@
+import fs from "fs";
+import path from "path";
 import Image from "next/image";
 
-const photos = [
-  "DSC00054-1",
-  "DSC00057",
-  "DSC00079",
-  "DSC00091",
-  "DSC00098",
-  "DSC00107",
-  "DSC00116",
-  "DSC00120",
-  "DSC00130",
-  "DSC00136",
-  "DSC00147",
-  "DSC00155",
-];
+function getPhotos() {
+  const dir = path.join(process.cwd(), "public/images/el-salvador");
+  const files = fs.readdirSync(dir);
+  return files
+    .filter((file) => /\.(jpe?g|png)$/i.test(file))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+    .map((file) => `/images/el-salvador/${file}`);
+}
 
 export default function ElSalvadorRecapPage() {
+  const photos = getPhotos();
+
   return (
     <div className="mx-auto max-w-5xl px-6 py-24 text-center">
       <p className="label-caps">El Salvador Recap</p>
@@ -29,15 +27,14 @@ export default function ElSalvadorRecapPage() {
         shared laughter and everything in between, take a look at some of the
         memories from our El Salvador retreat below!
       </p>
-      {/* This is a curated sample from the full album — more photos can be
-          added the same way once the rest are ready to migrate over. */}
       <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {photos.map((name) => (
-          <div key={name} className="relative aspect-square overflow-hidden">
+        {photos.map((src) => (
+          <div key={src} className="relative aspect-square overflow-hidden">
             <Image
-              src={`/images/el-salvador/${name}.jpg`}
+              src={src}
               alt="El Salvador retreat memory"
               fill
+              sizes="(max-width: 640px) 50vw, 33vw"
               className="object-cover"
             />
           </div>

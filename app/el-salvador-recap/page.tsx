@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import Image from "next/image";
+import PhotoGallery from "./PhotoGallery";
 
 function getPhotos() {
   const dir = path.join(process.cwd(), "public/images/el-salvador");
@@ -27,19 +27,11 @@ export default function ElSalvadorRecapPage() {
         shared laughter and everything in between, take a look at some of the
         memories from our El Salvador retreat below!
       </p>
-      <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {photos.map((src) => (
-          <div key={src} className="relative aspect-square overflow-hidden">
-            <Image
-              src={src}
-              alt="El Salvador retreat memory"
-              fill
-              sizes="(max-width: 640px) 50vw, 33vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-      </div>
+      <p className="mt-2 text-sm text-ink/50">
+        Tap a photo to enlarge it, then use the arrows (or swipe/arrow keys)
+        to browse.
+      </p>
+      <PhotoGallery photos={photos} />
     </div>
   );
 }

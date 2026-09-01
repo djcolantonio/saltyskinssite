@@ -27,6 +27,7 @@ export default function ContactPage() {
   }
 
   return (
+    <div className="bg-sandLight">
     <div className="mx-auto max-w-5xl px-6 py-24">
       <p className="label-caps text-center">We&rsquo;d Love to Hear From You</p>
       <h1 className="mt-4 text-center font-serif text-4xl font-light md:text-5xl">
@@ -40,7 +41,7 @@ export default function ContactPage() {
       <div className="mt-16 grid gap-16 md:grid-cols-2">
         <div className="space-y-8">
           <InfoBlock label="Email" value="ssyogaretreats@gmail.com" />
-          <InfoBlock label="Instagram" value="@ssyogaretreats" />
+          <InfoBlock label="Instagram" value="@saltyskinsretreats" />
           <InfoBlock
             label="Based In"
             value="Rockville Centre, NY — Retreating worldwide"
@@ -75,6 +76,7 @@ export default function ContactPage() {
           )}
         </form>
       </div>
+    </div>
     </div>
   );
 }

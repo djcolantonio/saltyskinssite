@@ -46,7 +46,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="https://instagram.com/ssyogaretreats" className="hover:text-sand transition-colors">
+                <a href="https://instagram.com/saltyskinsretreats" className="hover:text-sand transition-colors">
                   Instagram
                 </a>
               </li>

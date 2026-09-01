@@ -41,6 +41,7 @@ export default function ApplicationPage() {
 
   if (status === "sent") {
     return (
+      <div className="bg-sandLight">
       <div className="mx-auto max-w-2xl px-6 py-32 text-center">
         <p className="label-caps">Application Received</p>
         <h1 className="mt-4 font-serif text-4xl font-light">
@@ -52,10 +53,12 @@ export default function ApplicationPage() {
           deposit.
         </p>
       </div>
+      </div>
     );
   }
 
   return (
+    <div className="bg-sandLight">
     <div className="mx-auto max-w-2xl px-6 py-24">
       <p className="label-caps text-center">Ready to Go Deeper?</p>
       <h1 className="mt-4 text-center font-serif text-4xl font-light md:text-5xl">
@@ -151,6 +154,7 @@ export default function ApplicationPage() {
           <p className="text-sm text-red-700">{errorMsg}</p>
         )}
       </form>
+    </div>
     </div>
   );
 }

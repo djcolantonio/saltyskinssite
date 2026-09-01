@@ -35,7 +35,7 @@ export default function ElSalvadorRecapPage() {
         {photos.map((name) => (
           <div key={name} className="relative aspect-square overflow-hidden">
             <Image
-              src={`https://ssyogaretreats.com/wp-content/uploads/2026/03/${name}.jpg`}
+              src={`/images/el-salvador/${name}.jpg`}
               alt="El Salvador retreat memory"
               fill
               className="object-cover"

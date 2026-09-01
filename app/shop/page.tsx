@@ -1,65 +1,9 @@
-import Image from "next/image";
+"use client";
 
-// TODO: replace this static list with real Stripe Products once checkout is
-// wired up. Sizes/prices below were pulled from the live WooCommerce catalog.
-const products = [
-  {
-    slug: "clear-mind-t-shirt",
-    name: "Clear Mind T-Shirt",
-    price: 45,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/07/ssbeigefront.png",
-    blurb: "Heavyweight vintage-washed tee with exclusive Salty Skins artwork.",
-  },
-  {
-    slug: "do-my-nipples-offend-you-crop-tank",
-    name: "Do My Nipples Offend You? Crop Tank",
-    price: 30,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/07/dmnoy.png",
-    blurb: "A clean, everyday crop tank with a little attitude.",
-  },
-  {
-    slug: "limoncello-coast-crop-tank",
-    name: "Limoncello Coast Crop Tank",
-    price: 30,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/07/amalfi.png",
-    blurb: "An illustrated Amalfi Coast landscape framed by lemon branches.",
-  },
-  {
-    slug: "lucky-charm-tank",
-    name: "Lucky Charm Tank",
-    price: 30,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/07/beetle.png",
-    blurb: "A vibrant iridescent beetle graphic on a relaxed-fit tank.",
-  },
-  {
-    slug: "salty-lemons-tank",
-    name: "Salty Lemons Tank",
-    price: 30,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/02/Screenshot-2026-03-19-112035.png",
-    sizes: ["XS", "S", "M", "L", "XL"],
-  },
-  {
-    slug: "salty-skins-mineral-wash-t-shirt",
-    name: "Salty Skins Mineral Wash T-Shirt",
-    price: 45,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/02/Screenshot-2026-03-19-112121.png",
-    sizes: ["XS", "S", "M", "L", "XL"],
-  },
-  {
-    slug: "salty-skins-retro-sweatshirt",
-    name: "Salty Vintage Wave Rider Sweater",
-    price: 70,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/02/Screenshot-2026-03-19-112419.png",
-    sizes: ["XS", "S", "M", "L", "XL"],
-  },
-  {
-    slug: "the-storm-within-t-shirt",
-    name: "The Storm Within T-Shirt",
-    price: 45,
-    image: "https://ssyogaretreats.com/wp-content/uploads/2026/07/ss-black.png",
-    blurb: "Yoga beyond the mat — remaining centered while life moves around you.",
-  },
-];
+import Image from "next/image";
+import { useState } from "react";
+import { products, type Product } from "@/lib/products";
+import { useCart } from "@/lib/cart-context";
 
 export default function ShopPage() {
   return (
@@ -73,37 +17,56 @@ export default function ShopPage() {
         adventures.
       </p>
 
-      <div className="mt-6 text-center text-xs uppercase tracking-widest2 text-sandDark">
-        Checkout is being migrated to Stripe — shop reopens here shortly.
-      </div>
-
       <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
         {products.map((p) => (
-          <div key={p.slug} className="text-center">
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-cream">
-              <Image
-                src={p.image}
-                alt={p.name}
-                fill
-                className="object-cover"
-              />
-            </div>
-            <h3 className="mt-4 text-sm">{p.name}</h3>
-            <p className="mt-1 text-sm text-ink/70">${p.price.toFixed(2)}</p>
-            {p.sizes && (
-              <p className="mt-1 text-xs text-ink/50">
-                Sizes: {p.sizes.join(" / ")}
-              </p>
-            )}
-            <button
-              disabled
-              className="btn-outline mt-3 w-full cursor-not-allowed opacity-50"
-            >
-              {p.sizes ? "Select options" : "Add to cart"}
-            </button>
-          </div>
+          <ProductCard key={p.slug} product={p} />
         ))}
       </div>
+    </div>
+  );
+}
+
+function ProductCard({ product }: { product: Product }) {
+  const { addItem } = useCart();
+  const [size, setSize] = useState(product.sizes[0]);
+  const [added, setAdded] = useState(false);
+
+  function handleAdd() {
+    addItem({
+      slug: product.slug,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size,
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1500);
+  }
+
+  return (
+    <div className="text-center">
+      <div className="relative aspect-[3/4] w-full overflow-hidden bg-cream">
+        <Image src={product.image} alt={product.name} fill className="object-cover" />
+      </div>
+      <h3 className="mt-4 text-sm">{product.name}</h3>
+      <p className="mt-1 text-sm text-ink/70">${product.price.toFixed(2)}</p>
+
+      <select
+        value={size}
+        onChange={(e) => setSize(e.target.value)}
+        aria-label={`Size for ${product.name}`}
+        className="mt-2 w-full border border-black/15 bg-white px-2 py-2 text-xs outline-none focus:border-sand"
+      >
+        {product.sizes.map((s) => (
+          <option key={s} value={s}>
+            {s}
+          </option>
+        ))}
+      </select>
+
+      <button onClick={handleAdd} className="btn-outline mt-3 w-full">
+        {added ? "Added!" : "Add to Cart"}
+      </button>
     </div>
   );
 }

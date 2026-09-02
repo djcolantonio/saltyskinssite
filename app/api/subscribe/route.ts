@@ -8,6 +8,7 @@ const FROM_EMAIL = "Salty Skins Website <notifications@ssyogaretreats.com>";
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);
   const email = typeof body?.email === "string" ? body.email.trim() : "";
+  const name = typeof body?.name === "string" ? body.name.trim() : "";
 
   const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   if (!isValidEmail) {
@@ -19,6 +20,7 @@ export async function POST(req: NextRequest) {
 
   console.log("New newsletter signup:", {
     email,
+    name: name || undefined,
     receivedAt: new Date().toISOString(),
   });
 
@@ -26,10 +28,13 @@ export async function POST(req: NextRequest) {
   // notification below, so one failing doesn't block the other.
   const crm = getCrmSupabase();
   if (crm) {
-    const { error } = await crm.from("ssr_subscribers").insert({ email });
-    // Postgres unique-violation (23505) just means they already subscribed —
-    // not a real error worth logging.
-    if (error && error.code !== "23505") {
+    // Upsert (not plain insert) so someone who already subscribed with just
+    // an email and later signs up again with their name gets it added,
+    // rather than silently no-op'ing on the duplicate-email conflict.
+    const { error } = await crm
+      .from("ssr_subscribers")
+      .upsert({ email, name: name || null }, { onConflict: "email", ignoreDuplicates: false });
+    if (error) {
       console.error("[CRM] Failed to save subscriber:", error);
     }
   } else {

@@ -66,17 +66,19 @@ export default function RecapsDropdown() {
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full z-20 mt-3 min-w-[190px] rounded-sm border border-black/10 bg-cream py-2 shadow-lg">
-          {RECAPS.map((recap) => (
-            <Link
-              key={recap.href}
-              href={recap.href}
-              className="block px-4 py-2 text-sm text-ink hover:bg-sandLight hover:text-sand"
-              onClick={() => setOpen(false)}
-            >
-              {recap.label}
-            </Link>
-          ))}
+        <div className="absolute left-0 top-full z-20 pt-3">
+          <div className="min-w-[190px] rounded-sm border border-black/10 bg-cream py-2 shadow-lg">
+            {RECAPS.map((recap) => (
+              <Link
+                key={recap.href}
+                href={recap.href}
+                className="block px-4 py-2 text-sm text-ink hover:bg-sandLight hover:text-sand"
+                onClick={() => setOpen(false)}
+              >
+                {recap.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>

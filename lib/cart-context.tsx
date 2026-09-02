@@ -26,6 +26,9 @@ type CartContextValue = {
   clear: () => void;
   itemCount: number;
   subtotal: number;
+  isDrawerOpen: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
@@ -34,6 +37,7 @@ const STORAGE_KEY = "salty-skins-cart";
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [hydrated, setHydrated] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Load any saved cart once, on mount.
   useEffect(() => {
@@ -69,6 +73,9 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prev, { ...item, quantity }];
     });
+    // Pop open the mini-cart so people get instant feedback instead of
+    // having to click through to /cart to see it worked.
+    setIsDrawerOpen(true);
   }
 
   function removeItem(slug: string, size: string) {
@@ -89,6 +96,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setItems([]);
   }
 
+  function openDrawer() {
+    setIsDrawerOpen(true);
+  }
+
+  function closeDrawer() {
+    setIsDrawerOpen(false);
+  }
+
   const itemCount = useMemo(() => items.reduce((sum, i) => sum + i.quantity, 0), [items]);
   const subtotal = useMemo(
     () => items.reduce((sum, i) => sum + i.price * i.quantity, 0),
@@ -96,8 +111,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 
   const value = useMemo(
-    () => ({ items, addItem, removeItem, updateQuantity, clear, itemCount, subtotal }),
-    [items, itemCount, subtotal]
+    () => ({
+      items,
+      addItem,
+      removeItem,
+      updateQuantity,
+      clear,
+      itemCount,
+      subtotal,
+      isDrawerOpen,
+      openDrawer,
+      closeDrawer,
+    }),
+    [items, itemCount, subtotal, isDrawerOpen]
   );
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

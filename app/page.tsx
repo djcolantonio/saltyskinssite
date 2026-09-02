@@ -15,9 +15,11 @@ export default function HomePage() {
           className="object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/30" />
-        <div className="relative z-10 mx-auto max-w-2xl px-6 py-24">
-          <p className="label-caps mb-4">Salty Skins Retreats</p>
-          <h1 className="font-serif text-6xl font-light leading-tight md:text-7xl">
+        <div className="relative z-10 mx-auto max-w-3xl px-6 py-24">
+          <p className="mb-4 text-base tracking-widest2 uppercase text-sand">
+            Salty Skins Retreats
+          </p>
+          <h1 className="font-serif text-7xl font-light leading-tight md:text-8xl">
             Integrate, Embody
             <br />
             <span className="italic text-sand">Remember</span>

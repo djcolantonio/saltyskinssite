@@ -75,7 +75,7 @@ export default function HomePage() {
               date="Date TBA"
               status="COMING SOON"
               href="/application"
-              image="https://ssyogaretreats.com/wp-content/uploads/2026/04/upstate.jpg"
+              image="/retreat-upstate.jpg"
             />
             <RetreatCard
               eyebrow="Central America · Pacific Coast"
@@ -83,7 +83,7 @@ export default function HomePage() {
               date="February 6–11, 2027"
               status="EARLY ACCESS"
               href="/application"
-              image="https://ssyogaretreats.com/wp-content/uploads/2026/02/el-salvador-thumbnail-cartoon.png"
+              image="/retreat-el-salvador.jpg"
             />
           </div>
         </div>

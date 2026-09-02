@@ -30,7 +30,7 @@ export default async function SendBlogEmailPage({
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
   const key = typeof searchParams.key === "string" ? searchParams.key : "";
-  const expectedKey = process.env.BLOG_EMAIL_ADMIN_KEY;
+  const expectedKey = process.env.NEXT_PUBLIC_BLOG_EMAIL_ADMIN_KEY;
 
   if (!expectedKey || key !== expectedKey) {
     return (
@@ -41,6 +41,8 @@ export default async function SendBlogEmailPage({
   }
 
   const posts = await getPosts();
+  const initialSlug = typeof searchParams.post === "string" ? searchParams.post : undefined;
+  const initialPostId = posts.find((p) => p.slug === initialSlug)?._id;
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-16">
@@ -50,7 +52,7 @@ export default async function SendBlogEmailPage({
         Pick a published post and choose who on your subscriber list should get it.
       </p>
       <div className="mt-10">
-        <SendBlogEmailForm posts={posts} adminKey={key} />
+        <SendBlogEmailForm posts={posts} adminKey={key} initialPostId={initialPostId} />
       </div>
     </div>
   );

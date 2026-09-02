@@ -15,7 +15,7 @@ type SendRequestBody = {
 };
 
 export async function POST(req: NextRequest) {
-  const expectedKey = process.env.BLOG_EMAIL_ADMIN_KEY;
+  const expectedKey = process.env.NEXT_PUBLIC_BLOG_EMAIL_ADMIN_KEY;
   const sanityToken = process.env.SANITY_API_TOKEN;
   const resendKey = process.env.RESEND_API_KEY;
 

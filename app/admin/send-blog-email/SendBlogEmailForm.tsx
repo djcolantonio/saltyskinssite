@@ -15,11 +15,13 @@ type SendResult = { email: string; status: string; error?: string };
 export default function SendBlogEmailForm({
   posts,
   adminKey,
+  initialPostId,
 }: {
   posts: PostOption[];
   adminKey: string;
+  initialPostId?: string;
 }) {
-  const [selectedPostId, setSelectedPostId] = useState(posts[0]?._id || "");
+  const [selectedPostId, setSelectedPostId] = useState(initialPostId || posts[0]?._id || "");
   const [subscribers, setSubscribers] = useState<string[] | null>(null);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [loadError, setLoadError] = useState<string | null>(null);

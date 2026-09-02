@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCrmSupabaseAdmin } from "@/lib/crmSupabaseAdmin";
 
 export async function GET(req: NextRequest) {
-  const expectedKey = process.env.BLOG_EMAIL_ADMIN_KEY;
+  const expectedKey = process.env.NEXT_PUBLIC_BLOG_EMAIL_ADMIN_KEY;
   if (!expectedKey) {
     return NextResponse.json({ error: "Not configured." }, { status: 503 });
   }

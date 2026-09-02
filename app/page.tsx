@@ -8,7 +8,7 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative flex min-h-[640px] items-center justify-center overflow-hidden text-center text-white">
         <Image
-          src="https://ssyogaretreats.com/wp-content/uploads/2026/02/kristine-zale-macro-viewpoint-EZT6qusWOBQ-unsplash-3-1024x768.jpg"
+          src="/hero-amalfi.jpg"
           alt="Amalfi Coast"
           fill
           priority

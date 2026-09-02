@@ -48,6 +48,14 @@ export const postType = defineType({
         { type: "image", options: { hotspot: true } },
       ],
     }),
+    defineField({
+      name: "emailSentAt",
+      title: "Emailed to subscribers at",
+      type: "datetime",
+      description:
+        "Set automatically when this post is sent out to the subscriber list from the Send Blog Email admin page. Not meant to be edited by hand.",
+      readOnly: true,
+    }),
   ],
   preview: {
     select: { title: "title", media: "coverImage", subtitle: "publishedAt" },

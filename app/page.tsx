@@ -36,7 +36,7 @@ export default function HomePage() {
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-2">
         <div className="relative aspect-[5/4] w-full overflow-hidden bg-cream">
           <Image
-            src="https://ssyogaretreats.com/wp-content/uploads/2026/03/DSC00745.jpg"
+            src="/philosophy.jpg"
             alt="Salty Skins community"
             fill
             className="object-contain"

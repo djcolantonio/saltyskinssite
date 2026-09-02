@@ -47,7 +47,7 @@ export default function ApplicationPage() {
         <h1 className="mt-4 font-serif text-4xl font-light">
           Thank you for applying!
         </h1>
-        <p className="mt-6 text-ink/80">
+        <p className="mt-6 text-black">
           We&rsquo;ve received your application and will be in touch within
           48 hours with next steps, including how to secure your spot with a
           deposit.
@@ -64,7 +64,7 @@ export default function ApplicationPage() {
       <h1 className="mt-4 text-center font-serif text-4xl font-light md:text-5xl">
         Retreat Application
       </h1>
-      <p className="mx-auto mt-6 max-w-xl text-center text-ink/80">
+      <p className="mx-auto mt-6 max-w-xl text-center text-black">
         Tell us a bit about yourself. Submitting this application doesn&rsquo;t
         charge you anything — we&rsquo;ll follow up with availability and a
         link to secure your spot with a deposit.
@@ -128,7 +128,7 @@ export default function ApplicationPage() {
           name="notes"
         />
 
-        <label className="flex items-start gap-3 text-sm text-ink/80">
+        <label className="flex items-start gap-3 text-sm text-black">
           <input
             type="checkbox"
             name="waiverAcknowledged"
@@ -174,7 +174,7 @@ function Field({
 }) {
   return (
     <div>
-      <label className="mb-1 block text-xs tracking-widest2 uppercase text-ink/60">
+      <label className="mb-1 block text-xs tracking-widest2 uppercase text-black">
         {label}
         {required ? " (required)" : ""}
       </label>
@@ -200,7 +200,7 @@ function TextArea({
 }) {
   return (
     <div>
-      <label className="mb-1 block text-xs tracking-widest2 uppercase text-ink/60">
+      <label className="mb-1 block text-xs tracking-widest2 uppercase text-black">
         {label}
         {required ? " (required)" : ""}
       </label>
@@ -227,7 +227,7 @@ function Select({
 }) {
   return (
     <div>
-      <label className="mb-1 block text-xs tracking-widest2 uppercase text-ink/60">
+      <label className="mb-1 block text-xs tracking-widest2 uppercase text-black">
         {label}
         {required ? " (required)" : ""}
       </label>

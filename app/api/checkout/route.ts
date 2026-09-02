@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
       line_items,
-      shipping_address_collection: { allowed_countries: ["US"] },
+      shipping_address_collection: { allowed_countries: ["US", "CA"] },
       shipping_options: shippingRateIds.length
         ? shippingRateIds.map((shipping_rate) => ({ shipping_rate }))
         : undefined,

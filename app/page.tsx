@@ -6,7 +6,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[640px] items-center justify-center overflow-hidden text-center text-white">
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden text-center text-white">
         <Image
           src="/hero-amalfi.jpg"
           alt="Amalfi Coast"

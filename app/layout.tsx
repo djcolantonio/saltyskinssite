@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import { CartProvider } from "@/lib/cart-context";
 import CartDrawer from "@/components/CartDrawer";
+import SiteChrome from "@/components/SiteChrome";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -34,9 +33,7 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body className="font-sans">
         <CartProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <SiteChrome>{children}</SiteChrome>
           <CartDrawer />
         </CartProvider>
       </body>

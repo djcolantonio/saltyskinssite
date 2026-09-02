@@ -20,7 +20,7 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between px-6 py-6">
         <Link
           href="/"
-          className="whitespace-nowrap font-serif text-2xl leading-tight tracking-wide text-ink"
+          className="whitespace-nowrap font-serif text-3xl leading-tight tracking-wide text-ink"
         >
           Salty Skins
         </Link>

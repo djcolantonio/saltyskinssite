@@ -17,12 +17,12 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/60 to-ink/30" />
         <div className="relative z-10 mx-auto max-w-2xl px-6 py-24">
           <p className="label-caps mb-4">Salty Skins Retreats</p>
-          <h1 className="font-serif text-5xl font-light leading-tight md:text-6xl">
+          <h1 className="font-serif text-6xl font-light leading-tight md:text-7xl">
             Integrate, Embody
             <br />
             <span className="italic text-sand">Remember</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-md text-base font-light text-white/80">
+          <p className="mx-auto mt-6 max-w-lg text-lg font-light text-white/80">
             Immersive experiences rooted in movement, ritual, and the wild
             beauty of the world.
           </p>

@@ -19,7 +19,7 @@ export default function HomePage() {
           <p className="mb-4 text-base tracking-widest2 uppercase text-sand">
             Salty Skins Retreats
           </p>
-          <h1 className="font-serif text-7xl font-light leading-tight md:text-8xl">
+          <h1 className="font-serif text-6xl font-light leading-tight md:text-7xl">
             Integrate, Embody
             <br />
             <span className="italic text-sand">Remember</span>

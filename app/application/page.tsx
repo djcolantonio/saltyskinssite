@@ -3,8 +3,8 @@
 import { useState } from "react";
 
 const RETREATS = [
-  { value: "upstate-ny", label: "Upstate, NY — Date TBA" },
-  { value: "el-salvador-2027", label: "El Salvador — Feb 6–11, 2027" },
+  { value: "upstate-ny", label: "Upstate, NY (date TBA)" },
+  { value: "el-salvador-2027", label: "El Salvador, Feb 6–11, 2027" },
   { value: "other", label: "Not sure yet / future retreat" },
 ];
 
@@ -79,7 +79,7 @@ export default function ApplicationPage() {
       </h1>
       <p className="mx-auto mt-6 max-w-xl text-center text-black">
         Tell us a bit about yourself. Submitting this application doesn&rsquo;t
-        charge you anything — we&rsquo;ll follow up with availability and a
+        charge you anything. We&rsquo;ll follow up with availability and a
         link to secure your spot with a deposit.
       </p>
 
@@ -116,7 +116,7 @@ export default function ApplicationPage() {
         <Field
           label="Yoga / movement experience"
           name="experienceLevel"
-          placeholder="e.g. beginner, intermediate, teacher — all levels welcome"
+          placeholder="e.g. beginner, intermediate, teacher (all levels welcome)"
           required
         />
 
@@ -152,9 +152,9 @@ export default function ApplicationPage() {
           <p className="label-caps">Retreat Culture & Intentions</p>
           <p className="mt-2 text-sm text-black/70">
             Salty Skins Retreats are built around yoga, movement, ritual, and
-            intentional community — not a party vacation. This section helps
-            us make sure the retreat is the right fit for you (and you for
-            it).
+            intentional community, not a party vacation. This section helps
+            us make sure the retreat is the right fit for you, and you for
+            it.
           </p>
 
           <div className="mt-6 space-y-6">
@@ -189,11 +189,6 @@ export default function ApplicationPage() {
                 during unstructured free time, we ask that it stay light and
                 respectful of the group and the retreat&rsquo;s intention.
               </p>
-              <p className="mt-2">
-                If this retreat sounds like more of a party trip than a
-                growth-focused one, it&rsquo;s probably not the right fit —
-                and that&rsquo;s okay! We&rsquo;d rather you know that now.
-              </p>
             </div>
 
             <label className="flex items-start gap-3 text-sm text-black">
@@ -205,8 +200,8 @@ export default function ApplicationPage() {
               />
               <span>
                 I understand that Salty Skins Retreats are centered on yoga,
-                movement, ritual, and intentional community — not on alcohol
-                or partying — and I&rsquo;m applying because that&rsquo;s the
+                movement, ritual, and intentional community, not on alcohol
+                or partying, and I&rsquo;m applying because that&rsquo;s the
                 experience I&rsquo;m looking for.
               </span>
             </label>
@@ -261,7 +256,6 @@ function Field({
     <div>
       <label className="mb-1 block text-xs tracking-widest2 uppercase text-black">
         {label}
-        {required ? " (required)" : ""}
       </label>
       <input
         type={type}
@@ -287,7 +281,6 @@ function TextArea({
     <div>
       <label className="mb-1 block text-xs tracking-widest2 uppercase text-black">
         {label}
-        {required ? " (required)" : ""}
       </label>
       <textarea
         name={name}
@@ -314,7 +307,6 @@ function Select({
     <div>
       <label className="mb-1 block text-xs tracking-widest2 uppercase text-black">
         {label}
-        {required ? " (required)" : ""}
       </label>
       <select
         name={name}
@@ -350,7 +342,6 @@ function RadioGroup({
     <fieldset>
       <legend className="mb-2 block text-xs tracking-widest2 uppercase text-black">
         {label}
-        {required ? " (required)" : ""}
       </legend>
       <div className="flex flex-wrap gap-x-8 gap-y-2">
         {options.map((opt) => (

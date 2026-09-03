@@ -100,7 +100,7 @@ export async function POST(req: NextRequest) {
         `Room preference: ${body.roomPreference}`,
         `Experience level: ${body.experienceLevel}`,
         `Dietary restrictions: ${body.dietary}`,
-        `Emergency contact: ${body.emergencyContactName} — ${body.emergencyContactPhone}`,
+        `Emergency contact: ${body.emergencyContactName}, ${body.emergencyContactPhone}`,
         `Heard about us via: ${body.referralSource}`,
         `\nNotes:\n${body.notes}`,
         `\nLooking forward to: ${body.primaryMotivation}`,

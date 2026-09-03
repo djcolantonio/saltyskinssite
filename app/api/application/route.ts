@@ -12,6 +12,10 @@ const REQUIRED_FIELDS = [
   "retreat",
   "emergencyContactName",
   "emergencyContactPhone",
+  "primaryMotivation",
+  "experienceGoals",
+  "alcoholPlans",
+  "cultureAcknowledged",
   "waiverAcknowledged",
 ];
 
@@ -54,6 +58,10 @@ export async function POST(req: NextRequest) {
       emergency_contact_phone: body.emergencyContactPhone,
       referral_source: body.referralSource || null,
       notes: body.notes || null,
+      primary_motivation: body.primaryMotivation,
+      experience_goals: body.experienceGoals,
+      alcohol_plans: body.alcoholPlans,
+      culture_acknowledged: Boolean(body.cultureAcknowledged),
       waiver_acknowledged: Boolean(body.waiverAcknowledged),
     });
     if (error) console.error("[CRM] Failed to save application:", error);
@@ -86,6 +94,10 @@ export async function POST(req: NextRequest) {
         `Emergency contact: ${body.emergencyContactName} — ${body.emergencyContactPhone}`,
         body.referralSource ? `Heard about us via: ${body.referralSource}` : null,
         body.notes ? `\nNotes:\n${body.notes}` : null,
+        `\nLooking forward to: ${body.primaryMotivation}`,
+        `What they hope to get out of it: ${body.experienceGoals}`,
+        `Plans to drink alcohol: ${body.alcoholPlans}`,
+        `Acknowledged retreat culture/values: ${body.cultureAcknowledged ? "Yes" : "No"}`,
       ]
         .filter(Boolean)
         .join("\n"),

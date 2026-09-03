@@ -8,6 +8,19 @@ const RETREATS = [
   { value: "other", label: "Not sure yet / future retreat" },
 ];
 
+const LOOKING_FORWARD_OPTIONS = [
+  { value: "practice", label: "Deepening my yoga & movement practice" },
+  { value: "rest-connection", label: "Rest, connection, and community" },
+  { value: "adventure", label: "Adventure and exploring somewhere new" },
+  { value: "mix", label: "A mix of all of the above" },
+];
+
+const ALCOHOL_OPTIONS = [
+  { value: "yes", label: "Yes" },
+  { value: "no", label: "No" },
+  { value: "unsure", label: "Unsure" },
+];
+
 export default function ApplicationPage() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle"
@@ -128,6 +141,71 @@ export default function ApplicationPage() {
           name="notes"
         />
 
+        <div className="border-t border-black/10 pt-8">
+          <p className="label-caps">Retreat Culture & Intentions</p>
+          <p className="mt-2 text-sm text-black/70">
+            Salty Skins Retreats are built around yoga, movement, ritual, and
+            intentional community — not a party vacation. This section helps
+            us make sure the retreat is the right fit for you (and you for
+            it).
+          </p>
+
+          <div className="mt-6 space-y-6">
+            <Select
+              label="What are you most looking forward to on this retreat?"
+              name="primaryMotivation"
+              options={LOOKING_FORWARD_OPTIONS}
+              required
+            />
+
+            <TextArea
+              label="What are you hoping to get out of this experience?"
+              name="experienceGoals"
+              required
+            />
+
+            <RadioGroup
+              label="Do you plan to drink alcohol during the retreat?"
+              name="alcoholPlans"
+              options={ALCOHOL_OPTIONS}
+              required
+            />
+
+            <div className="border border-sand/40 bg-white/60 px-5 py-4 text-sm text-black/80">
+              <p className="font-serif italic text-base text-ink">
+                Alcohol & Beverage Policy
+              </p>
+              <p className="mt-2">
+                Salty Skins Retreats does not provide, sell, or build our
+                itinerary around alcohol. Our days are centered on yoga,
+                movement, ritual, and connection. If you choose to drink
+                during unstructured free time, we ask that it stay light and
+                respectful of the group and the retreat&rsquo;s intention.
+              </p>
+              <p className="mt-2">
+                If this retreat sounds like more of a party trip than a
+                growth-focused one, it&rsquo;s probably not the right fit —
+                and that&rsquo;s okay! We&rsquo;d rather you know that now.
+              </p>
+            </div>
+
+            <label className="flex items-start gap-3 text-sm text-black">
+              <input
+                type="checkbox"
+                name="cultureAcknowledged"
+                required
+                className="mt-1 h-4 w-4 border-black/30"
+              />
+              <span>
+                I understand that Salty Skins Retreats are centered on yoga,
+                movement, ritual, and intentional community — not on alcohol
+                or partying — and I&rsquo;m applying because that&rsquo;s the
+                experience I&rsquo;m looking for.
+              </span>
+            </label>
+          </div>
+        </div>
+
         <label className="flex items-start gap-3 text-sm text-black">
           <input
             type="checkbox"
@@ -247,5 +325,40 @@ function Select({
         ))}
       </select>
     </div>
+  );
+}
+
+function RadioGroup({
+  label,
+  name,
+  options,
+  required,
+}: {
+  label: string;
+  name: string;
+  options: { value: string; label: string }[];
+  required?: boolean;
+}) {
+  return (
+    <fieldset>
+      <legend className="mb-2 block text-xs tracking-widest2 uppercase text-black">
+        {label}
+        {required ? " (required)" : ""}
+      </legend>
+      <div className="flex flex-wrap gap-x-8 gap-y-2">
+        {options.map((opt) => (
+          <label key={opt.value} className="flex items-center gap-2 text-sm text-black">
+            <input
+              type="radio"
+              name={name}
+              value={opt.value}
+              required={required}
+              className="h-4 w-4 border-black/30"
+            />
+            {opt.label}
+          </label>
+        ))}
+      </div>
+    </fieldset>
   );
 }

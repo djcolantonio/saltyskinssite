@@ -90,8 +90,10 @@ export default function ApplicationPage() {
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
           <Field label="Phone" name="phone" type="tel" required />
-          <Field label="Instagram handle" name="instagram" />
+          <Field label="Date of birth" name="dateOfBirth" type="date" required />
         </div>
+
+        <Field label="Instagram handle" name="instagram" required />
 
         <Select
           label="Which retreat are you applying for?"
@@ -108,17 +110,20 @@ export default function ApplicationPage() {
             { value: "double", label: "Double occupancy (shared)" },
             { value: "no-preference", label: "No preference" },
           ]}
+          required
         />
 
         <Field
           label="Yoga / movement experience"
           name="experienceLevel"
           placeholder="e.g. beginner, intermediate, teacher — all levels welcome"
+          required
         />
 
         <TextArea
           label="Dietary restrictions or allergies"
           name="dietary"
+          required
         />
 
         <div className="grid gap-6 sm:grid-cols-2">
@@ -134,11 +139,13 @@ export default function ApplicationPage() {
         <Field
           label="How did you hear about us?"
           name="referralSource"
+          required
         />
 
         <TextArea
           label="Anything else you'd like us to know?"
           name="notes"
+          required
         />
 
         <div className="border-t border-black/10 pt-8">

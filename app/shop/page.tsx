@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { products, type Product } from "@/lib/products";
 import { useCart } from "@/lib/cart-context";
@@ -45,10 +46,12 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="text-center">
-      <div className="relative aspect-[3/4] w-full overflow-hidden bg-cream">
-        <Image src={product.image} alt={product.name} fill className="object-cover" />
-      </div>
-      <h3 className="mt-4 text-sm">{product.name}</h3>
+      <Link href={`/shop/${product.slug}`}>
+        <div className="relative aspect-[3/4] w-full overflow-hidden bg-cream">
+          <Image src={product.image} alt={product.name} fill className="object-cover transition-transform duration-300 hover:scale-[1.03]" />
+        </div>
+        <h3 className="mt-4 text-sm hover:text-sand">{product.name}</h3>
+      </Link>
       <p className="mt-1 text-sm text-ink/70">${product.price.toFixed(2)}</p>
 
       <select

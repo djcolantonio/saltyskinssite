@@ -12,6 +12,15 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
   const [size, setSize] = useState(product?.sizes[0] ?? "");
   const [added, setAdded] = useState(false);
   const [zoomed, setZoomed] = useState(false);
+  const [hoverZoom, setHoverZoom] = useState(false);
+  const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
+
+  function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomOrigin(`${x}% ${y}%`);
+  }
 
   if (!product) {
     return (
@@ -131,11 +140,31 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
       {zoomed && (
         <div
           onClick={() => setZoomed(false)}
-          className="fixed inset-0 z-50 flex cursor-zoom-out items-center justify-center bg-ink/90 p-6"
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-ink/95 p-4 md:p-10"
         >
-          <div className="relative h-full w-full max-w-3xl">
-            <Image src={product.image} alt={product.name} fill className="object-contain" />
+          <div
+            onClick={(e) => e.stopPropagation()}
+            onMouseMove={handleZoomMove}
+            onMouseEnter={() => setHoverZoom(true)}
+            onMouseLeave={() => setHoverZoom(false)}
+            className={`relative h-full w-full max-w-4xl overflow-hidden ${
+              hoverZoom ? "cursor-zoom-out" : "cursor-zoom-in"
+            }`}
+          >
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-contain transition-transform duration-150 ease-out"
+              style={{
+                transformOrigin: zoomOrigin,
+                transform: hoverZoom ? "scale(2.75)" : "scale(1)",
+              }}
+            />
           </div>
+          <p className="mt-3 text-xs tracking-widest2 uppercase text-white/50">
+            Move your cursor over the photo to zoom in &middot; tap outside to close
+          </p>
           <button
             type="button"
             onClick={() => setZoomed(false)}

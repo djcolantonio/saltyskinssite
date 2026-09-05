@@ -1,11 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 
 type MoreLink = { href: string; label: string };
 
-export default function MoreDropdown({ links }: { links: MoreLink[] }) {
+export default function MoreDropdown({
+  links,
+  extra,
+}: {
+  links: MoreLink[];
+  extra?: ReactNode;
+}) {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -70,6 +76,14 @@ export default function MoreDropdown({ links }: { links: MoreLink[] }) {
                 {link.label}
               </Link>
             ))}
+            {extra && (
+              <div
+                className="block px-4 py-2 text-sm text-ink [&_button]:text-sm [&_button]:text-ink"
+                onClick={() => setOpen(false)}
+              >
+                {extra}
+              </div>
+            )}
           </div>
         </div>
       )}

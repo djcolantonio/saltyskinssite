@@ -10,8 +10,9 @@ const navLinks = [
 
 const navLinksAfterRecaps = [
   { href: "/blog", label: "Blog" },
-  { href: "/private-clients", label: "Private Clients" },
   { href: "/application", label: "Application" },
+  { href: "/upstate-retreat", label: "Upstate Retreat" },
+  { href: "/private-clients", label: "Private Clients" },
   { href: "/contact", label: "Contact" },
   { href: "/shop", label: "Shop" },
 ];
@@ -22,16 +23,17 @@ const navLinksAfterRecaps = [
 const MOBILE_PRIMARY = [
   { href: "/", label: "Home" },
   { href: "/private-clients", label: "Private Clients" },
-  { href: "/application", label: "Application" },
-  { href: "/shop", label: "Shop" },
+  { href: "/upstate-retreat", label: "Upstate Retreat" },
+  { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 const MOBILE_MORE = [
-  { href: "/about", label: "About" },
+  { href: "/application", label: "Application" },
+  { href: "/shop", label: "Shop" },
   { href: "/el-salvador-recap", label: "El Salvador Recap" },
   { href: "/italy-recap", label: "Italy Recap" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -82,10 +84,7 @@ export default function Header() {
               </li>
             ))}
             <li>
-              <CartLink />
-            </li>
-            <li>
-              <MoreDropdown links={MOBILE_MORE} />
+              <MoreDropdown links={MOBILE_MORE} extra={<CartLink />} />
             </li>
           </ul>
         </nav>

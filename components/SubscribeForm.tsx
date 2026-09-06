@@ -43,7 +43,8 @@ export default function SubscribeForm() {
           <input
             type="text"
             name="name"
-            placeholder="Your name (optional)"
+            required
+            placeholder="Your name"
             className="flex-1 border border-white/30 bg-white/10 px-4 py-3 text-sm text-white placeholder-white/60 outline-none"
           />
           <input

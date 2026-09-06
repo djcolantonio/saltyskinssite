@@ -17,6 +17,12 @@ export async function POST(req: NextRequest) {
       { status: 400 }
     );
   }
+  if (!name) {
+    return NextResponse.json(
+      { error: "Your name is required." },
+      { status: 400 }
+    );
+  }
 
   console.log("New newsletter signup:", {
     email,

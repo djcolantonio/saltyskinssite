@@ -49,7 +49,7 @@ export default function PrivateClientsPage() {
 
   return (
     <div className="md:flex md:min-h-[calc(100vh-96px)]">
-      {/* Left — its own dark, editorial panel so this reads as a distinct
+      {/* Left: its own dark, editorial panel so this reads as a distinct
           service rather than just another page in the site's usual
           cream/sand template. */}
       <div className="bg-ink px-6 py-20 text-cream md:flex md:w-1/2 md:items-center md:py-24 md:sticky md:top-0 md:h-[calc(100vh-96px)]">
@@ -63,7 +63,7 @@ export default function PrivateClientsPage() {
             <span className="italic" style={{ color: "#8fb8b3" }}>with Marci</span>
           </h1>
           <p className="mt-6 max-w-sm text-cream/70">
-            A dedicated hour built entirely around you — not a class,
+            A dedicated hour built entirely around you. Not a class,
             not a retreat, just focused one-on-one time on the mat.
           </p>
           <ul className="mt-10 space-y-4">
@@ -77,7 +77,7 @@ export default function PrivateClientsPage() {
         </div>
       </div>
 
-      {/* Right — the request form, raised on its own card so it feels like
+      {/* Right: the request form, raised on its own card so it feels like
           a distinct booking widget rather than a flat page form. */}
       <div className="flex items-center bg-sandLight px-6 py-16 md:w-1/2 md:py-24">
         <div className="mx-auto w-full max-w-md">
@@ -89,15 +89,15 @@ export default function PrivateClientsPage() {
               <h2 className="mt-4 font-serif text-3xl font-light">Thank you!</h2>
               <p className="mt-4 text-sm text-black/70">
                 Marci has your preferred date and time and will follow up
-                by email {"—"} and by text if you left a number {"—"} to
-                confirm your session.
+                by email, and by text if you left a number, to confirm
+                your session.
               </p>
             </div>
           ) : (
             <div className="rounded-2xl bg-white p-8 shadow-xl md:p-10">
               <h2 className="font-serif text-2xl font-light">Request a session</h2>
               <p className="mt-2 text-sm text-black/60">
-                This sends a request, not a confirmed booking {"—"} Marci
+                This sends a request, not a confirmed booking. Marci
                 will reach back out to lock in the details.
               </p>
 

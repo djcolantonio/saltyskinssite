@@ -108,9 +108,10 @@ export default function PrivateClientsPage() {
                 </div>
 
                 <Field
-                  label="Phone (optional, so Marci can text you)"
+                  label="Phone (so Marci can text you)"
                   name="phone"
                   type="tel"
+                  required
                 />
 
                 <div className="grid gap-5 sm:grid-cols-2">

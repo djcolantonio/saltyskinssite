@@ -5,7 +5,7 @@ import { getCrmSupabase } from "@/lib/crmSupabase";
 const TO_EMAIL = "ssyogaretreats@gmail.com";
 const FROM_EMAIL = "Salty Skins Website <notifications@ssyogaretreats.com>";
 
-const REQUIRED_FIELDS = ["name", "email", "preferredDate", "preferredTime"];
+const REQUIRED_FIELDS = ["name", "email", "phone", "preferredDate", "preferredTime"];
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null);

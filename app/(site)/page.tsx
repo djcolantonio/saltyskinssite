@@ -28,9 +28,7 @@ export default function HomePage() {
             Immersive experiences rooted in movement, ritual, and the wild
             beauty of the world.
           </p>
-          <div id="subscribe">
-            <SubscribeForm />
-          </div>
+          <SubscribeForm />
         </div>
       </section>
 

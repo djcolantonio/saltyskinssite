@@ -9,10 +9,10 @@ const navLinks = [
 ];
 
 const navLinksAfterRecaps = [
-  { href: "/blog", label: "Blog" },
   { href: "/application", label: "Application" },
   { href: "/upstate-retreat", label: "Upstate Retreat" },
   { href: "/private-clients", label: "Private Clients" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
   { href: "/shop", label: "Shop" },
 ];

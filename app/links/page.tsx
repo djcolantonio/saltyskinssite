@@ -1,10 +1,4 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-
-export const metadata: Metadata = {
-  title: "Salty Skins Yoga — Links",
-  description: "Everything Salty Skins Yoga, in one place.",
-};
 
 const links = [
   {
@@ -20,9 +14,9 @@ const links = [
     icon: <CalendarIcon />,
   },
   {
-    href: "/#subscribe",
+    href: "/",
     label: "Join the Community",
-    sub: "Get notified about our next retreats",
+    sub: "Subscribe for our next retreats",
     icon: <MailIcon />,
   },
   {

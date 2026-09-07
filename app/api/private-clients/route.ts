@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
           paragraph("Marci will reach out to confirm the details."),
         ].join(""),
         ctas: [upstateRetreatCta()],
-        closingQuestion: "What else are you looking to improve in your yoga practice?",
+        closingQuestion: "What are you working on in your yoga and fitness journey?",
       }),
       text: [
         `Hi ${body.name},`,
@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
         "While you wait, check out the Upstate Retreat: https://saltyskinsyoga.com/upstate-retreat",
         "Follow along: instagram.com/saltyskinsretreats or instagram.com/marci_ville",
         "",
-        "What else are you looking to improve in your yoga practice?",
+        "What are you working on in your yoga and fitness journey?",
         "",
         "Talk soon,",
         "Salty Skins",

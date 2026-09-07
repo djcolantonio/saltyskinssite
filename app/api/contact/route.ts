@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
           ),
         ].join(""),
         ctas: [upstateRetreatCta(), privateSessionCta()],
-        closingQuestion: "What else are you looking to improve in your yoga practice?",
+        closingQuestion: "What are you working on in your yoga and fitness journey?",
       }),
       text: [
         `Hi ${body.name},`,
@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
         "Book a private session with Marci: https://saltyskinsyoga.com/private-clients",
         "Follow along: instagram.com/saltyskinsretreats or instagram.com/marci_ville",
         "",
-        "What else are you looking to improve in your yoga practice?",
+        "What are you working on in your yoga and fitness journey?",
         "",
         "Talk soon,",
         "Salty Skins",

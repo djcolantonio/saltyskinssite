@@ -25,6 +25,7 @@ const MOBILE_PRIMARY = [
   { href: "/private-clients", label: "Private Clients" },
   { href: "/upstate-retreat", label: "Upstate Retreat" },
   { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -33,7 +34,6 @@ const MOBILE_MORE = [
   { href: "/shop", label: "Shop" },
   { href: "/el-salvador-recap", label: "El Salvador Recap" },
   { href: "/italy-recap", label: "Italy Recap" },
-  { href: "/blog", label: "Blog" },
 ];
 
 export default function Header() {

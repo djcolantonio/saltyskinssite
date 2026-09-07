@@ -19,7 +19,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: "Salty Skins Retreats",
+  title: "Salty Skins Yoga",
   description:
     "Immersive yoga and movement retreats rooted in movement, ritual, and the wild beauty of the world.",
 };

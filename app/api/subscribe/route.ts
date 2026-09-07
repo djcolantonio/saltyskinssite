@@ -53,8 +53,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
+  const resend = new Resend(apiKey);
+
   try {
-    const resend = new Resend(apiKey);
     await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
@@ -66,6 +67,26 @@ export async function POST(req: NextRequest) {
     // Don't fail the request just because the notification email failed —
     // the signup is already logged and saved to the CRM above.
     console.error("[Resend] Failed to send subscribe notification:", err);
+  }
+
+  try {
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: email,
+      replyTo: TO_EMAIL,
+      subject: "You're on the list!",
+      text: [
+        `Hi ${name || "there"},`,
+        "",
+        "Thanks for subscribing to Salty Skins. You'll be the first to know about upcoming retreats, new dates, and anything else worth sharing.",
+        "",
+        "Talk soon,",
+        "Salty Skins",
+      ].join("\n"),
+    });
+  } catch (err) {
+    // Confirmation email is a nice-to-have — never fail the signup over it.
+    console.error("[Resend] Failed to send subscriber confirmation:", err);
   }
 
   return NextResponse.json({ ok: true });

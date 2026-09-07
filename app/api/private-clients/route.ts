@@ -53,8 +53,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
+  const resend = new Resend(apiKey);
+
   try {
-    const resend = new Resend(apiKey);
     await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
@@ -75,6 +76,31 @@ export async function POST(req: NextRequest) {
     // Don't fail the request just because the notification email failed —
     // the request is already logged and saved to the CRM above.
     console.error("[Resend] Failed to send private booking notification:", err);
+  }
+
+  try {
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: body.email,
+      replyTo: TO_EMAIL,
+      subject: "Your private session request is in",
+      text: [
+        `Hi ${body.name},`,
+        "",
+        "Thanks for requesting a private session with Marci. Here's what you sent:",
+        "",
+        `Preferred date: ${body.preferredDate}`,
+        `Preferred time: ${body.preferredTime}`,
+        "",
+        "Marci will reach out to confirm the details.",
+        "",
+        "Talk soon,",
+        "Salty Skins",
+      ].join("\n"),
+    });
+  } catch (err) {
+    // Confirmation email is a nice-to-have — never fail the request over it.
+    console.error("[Resend] Failed to send private booking confirmation:", err);
   }
 
   return NextResponse.json({ ok: true });

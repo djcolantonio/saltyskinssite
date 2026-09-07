@@ -42,8 +42,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
+  const resend = new Resend(apiKey);
+
   try {
-    const resend = new Resend(apiKey);
     await resend.emails.send({
       from: FROM_EMAIL,
       to: TO_EMAIL,
@@ -61,6 +62,26 @@ export async function POST(req: NextRequest) {
     // Don't fail the request just because the notification email failed —
     // the submission is already logged and saved to the CRM above.
     console.error("[Resend] Failed to send contact notification:", err);
+  }
+
+  try {
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to: body.email,
+      replyTo: TO_EMAIL,
+      subject: "We got your message",
+      text: [
+        `Hi ${body.name},`,
+        "",
+        "Thanks for reaching out to Salty Skins. We got your message and will get back to you within a day or two.",
+        "",
+        "Talk soon,",
+        "Salty Skins",
+      ].join("\n"),
+    });
+  } catch (err) {
+    // Confirmation email is a nice-to-have — never fail the submission over it.
+    console.error("[Resend] Failed to send contact confirmation:", err);
   }
 
   return NextResponse.json({ ok: true });

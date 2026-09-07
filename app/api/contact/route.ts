@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getCrmSupabase } from "@/lib/crmSupabase";
+import {
+  escapeHtml,
+  paragraph,
+  privateSessionCta,
+  renderConfirmationEmail,
+  upstateRetreatCta,
+} from "@/lib/emailTemplate";
 
 const TO_EMAIL = "ssyogaretreats@gmail.com";
 const FROM_EMAIL = "Salty Skins Website <notifications@saltyskinsyoga.com>";
@@ -65,15 +72,33 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const safeName = escapeHtml(body.name);
     await resend.emails.send({
       from: FROM_EMAIL,
       to: body.email,
       replyTo: TO_EMAIL,
       subject: "We got your message",
+      html: renderConfirmationEmail({
+        heading: "We got your message",
+        bodyHtml: [
+          paragraph(`Hi ${safeName},`),
+          paragraph(
+            "Thanks for reaching out to Salty Skins. We got your message and will get back to you within a day or two."
+          ),
+        ].join(""),
+        ctas: [upstateRetreatCta(), privateSessionCta()],
+        closingQuestion: "What else are you looking to improve in your yoga practice?",
+      }),
       text: [
         `Hi ${body.name},`,
         "",
         "Thanks for reaching out to Salty Skins. We got your message and will get back to you within a day or two.",
+        "",
+        "See the Upstate Retreat: https://saltyskinsyoga.com/upstate-retreat",
+        "Book a private session with Marci: https://saltyskinsyoga.com/private-clients",
+        "Follow along: instagram.com/saltyskinsretreats or instagram.com/marci_ville",
+        "",
+        "What else are you looking to improve in your yoga practice?",
         "",
         "Talk soon,",
         "Salty Skins",

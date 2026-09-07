@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 import { getCrmSupabase } from "@/lib/crmSupabase";
+import {
+  escapeHtml,
+  paragraph,
+  privateSessionCta,
+  renderConfirmationEmail,
+  upstateRetreatCta,
+} from "@/lib/emailTemplate";
 
 const TO_EMAIL = "ssyogaretreats@gmail.com";
 const FROM_EMAIL = "Salty Skins Website <notifications@saltyskinsyoga.com>";
@@ -79,11 +86,25 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    const safeName = escapeHtml(body.name);
+    const safeDate = escapeHtml(String(body.preferredDate));
+    const safeTime = escapeHtml(String(body.preferredTime));
     await resend.emails.send({
       from: FROM_EMAIL,
       to: body.email,
       replyTo: TO_EMAIL,
       subject: "Your private session request is in",
+      html: renderConfirmationEmail({
+        heading: "Your private session request is in",
+        bodyHtml: [
+          paragraph(`Hi ${safeName},`),
+          paragraph("Thanks for requesting a private session with Marci. Here's what you sent:"),
+          paragraph(`<strong>Preferred date:</strong> ${safeDate}<br/><strong>Preferred time:</strong> ${safeTime}`),
+          paragraph("Marci will reach out to confirm the details."),
+        ].join(""),
+        ctas: [upstateRetreatCta()],
+        closingQuestion: "What else are you looking to improve in your yoga practice?",
+      }),
       text: [
         `Hi ${body.name},`,
         "",
@@ -93,6 +114,11 @@ export async function POST(req: NextRequest) {
         `Preferred time: ${body.preferredTime}`,
         "",
         "Marci will reach out to confirm the details.",
+        "",
+        "While you wait, check out the Upstate Retreat: https://saltyskinsyoga.com/upstate-retreat",
+        "Follow along: instagram.com/saltyskinsretreats or instagram.com/marci_ville",
+        "",
+        "What else are you looking to improve in your yoga practice?",
         "",
         "Talk soon,",
         "Salty Skins",

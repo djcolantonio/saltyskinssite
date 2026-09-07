@@ -3,7 +3,7 @@ import Stripe from "stripe";
 import { Resend } from "resend";
 
 const TO_EMAIL = "ssyogaretreats@gmail.com";
-const FROM_EMAIL = "Salty Skins Website <notifications@ssyogaretreats.com>";
+const FROM_EMAIL = "Salty Skins Website <notifications@saltyskinsyoga.com>";
 
 export async function POST(req: NextRequest) {
   const secretKey = process.env.STRIPE_SECRET_KEY;

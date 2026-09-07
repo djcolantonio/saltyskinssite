@@ -5,7 +5,7 @@ import { apiVersion, dataset, projectId } from "@/sanity/env";
 import { portableTextToEmailHtml } from "@/lib/portableTextToEmailHtml";
 import { signEmail } from "@/lib/emailAuth";
 
-const FROM_EMAIL = "Salty Skins Retreats <notifications@ssyogaretreats.com>";
+const FROM_EMAIL = "Salty Skins Retreats <notifications@saltyskinsyoga.com>";
 const REPLY_TO = "ssyogaretreats@gmail.com";
 
 type SendRequestBody = {
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Post not found." }, { status: 404 });
   }
 
-  const origin = req.headers.get("origin") || "https://ssyogaretreats.com";
+  const origin = req.headers.get("origin") || "https://saltyskinsyoga.com";
   const postUrl = `${origin}/blog/${post.slug}`;
   const bodyHtml = portableTextToEmailHtml(post.body);
 

@@ -3,7 +3,7 @@ import { Resend } from "resend";
 import { getCrmSupabase } from "@/lib/crmSupabase";
 
 const TO_EMAIL = "ssyogaretreats@gmail.com";
-const FROM_EMAIL = "Salty Skins Website <notifications@ssyogaretreats.com>";
+const FROM_EMAIL = "Salty Skins Website <notifications@saltyskinsyoga.com>";
 
 const REQUIRED_FIELDS = [
   "fullName",

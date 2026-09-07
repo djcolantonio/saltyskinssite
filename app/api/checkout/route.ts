@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Your cart is empty." }, { status: 400 });
   }
 
-  const origin = req.headers.get("origin") || "https://ssyogaretreats.com";
+  const origin = req.headers.get("origin") || "https://saltyskinsyoga.com";
 
   // Always price from our own catalog — never trust amounts sent by the
   // client, since the request body could be tampered with before it hits us.

@@ -1,14 +1,23 @@
+import type { Metadata } from "next";
+import ItalyJournal from "./ItalyJournal";
+
+export const metadata: Metadata = {
+  title: "Italy Retreat Recap | Salty Skins",
+  description:
+    "Step inside our Italy retreat: terrace yoga, the Path of the Gods hike, poolside wellness, chef-prepared food, and the people who made it unforgettable.",
+  openGraph: {
+    title: "A little Italy. A lot of soul. | Salty Skins",
+    description:
+      "A photo journal of movement, adventure, good food, and connection on the Amalfi Coast.",
+    images: [
+      {
+        url: "https://saltyskinsyoga.com/images/italy/recap/dsc01070.jpg",
+        alt: "The Salty Skins Italy retreat group",
+      },
+    ],
+  },
+};
+
 export default function ItalyRecapPage() {
-  return (
-    <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-      <p className="label-caps">Italy Recap</p>
-      <h1 className="mt-4 font-serif text-4xl font-light md:text-5xl">
-        Coming Soon
-      </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-ink/80">
-        We&rsquo;re still gathering photos and memories from the Italy
-        retreat. Check back soon for the full recap!
-      </p>
-    </div>
-  );
+  return <ItalyJournal />;
 }

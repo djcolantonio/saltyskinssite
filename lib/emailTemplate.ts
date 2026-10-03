@@ -21,8 +21,8 @@ export function paragraph(html: string): string {
   return `<p style="margin:0 0 16px; font-family:Georgia,'Times New Roman',serif; font-size:16px; line-height:1.6; color:#26302B;">${html}</p>`;
 }
 
-export function upstateRetreatCta(): EmailCta {
-  return { label: "See the Upstate Retreat", href: `${SITE_URL}/upstate-retreat` };
+export function upcomingRetreatsCta(): EmailCta {
+  return { label: "See Upcoming Retreats", href: `${SITE_URL}/#upcoming-retreats` };
 }
 
 export function privateSessionCta(): EmailCta {

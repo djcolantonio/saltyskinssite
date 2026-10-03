@@ -2,12 +2,6 @@ import Link from "next/link";
 
 const links = [
   {
-    href: "/upstate-retreat",
-    label: "Upstate Retreat",
-    sub: "Coming soon · get the details",
-    icon: <MountainIcon />,
-  },
-  {
     href: "/private-clients",
     label: "Book a Private Session",
     sub: "One-on-one yoga with Marci",
@@ -83,15 +77,6 @@ export default function LinksPage() {
         </p>
       </div>
     </section>
-  );
-}
-
-function MountainIcon() {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
-      <path d="M3 20l6-11 4 6 2-3 6 8H3z" />
-      <circle cx="17" cy="6" r="2" />
-    </svg>
   );
 }
 

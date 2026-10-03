@@ -10,7 +10,6 @@ const navLinks = [
 
 const navLinksAfterRecaps = [
   { href: "/application", label: "Application" },
-  { href: "/upstate-retreat", label: "Upstate Retreat" },
   { href: "/private-clients", label: "Private Clients" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
@@ -23,7 +22,6 @@ const navLinksAfterRecaps = [
 const MOBILE_PRIMARY = [
   { href: "/", label: "Home" },
   { href: "/private-clients", label: "Private Clients" },
-  { href: "/upstate-retreat", label: "Upstate Retreat" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },

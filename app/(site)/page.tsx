@@ -62,7 +62,7 @@ export default function HomePage() {
       </section>
 
       {/* Upcoming Retreats */}
-      <section className="bg-sandLight py-24">
+      <section id="upcoming-retreats" className="bg-sandLight py-24">
         <div className="mx-auto max-w-6xl px-6">
           <p className="label-caps mb-2 text-center">Upcoming Retreats</p>
           <h2 className="text-center font-serif text-4xl font-light">

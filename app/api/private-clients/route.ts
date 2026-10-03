@@ -6,7 +6,7 @@ import {
   paragraph,
   privateSessionCta,
   renderConfirmationEmail,
-  upstateRetreatCta,
+  upcomingRetreatsCta,
 } from "@/lib/emailTemplate";
 
 const TO_EMAIL = "ssyogaretreats@gmail.com";
@@ -102,7 +102,7 @@ export async function POST(req: NextRequest) {
           paragraph(`<strong>Preferred date:</strong> ${safeDate}<br/><strong>Preferred time:</strong> ${safeTime}`),
           paragraph("Marci will reach out to confirm the details."),
         ].join(""),
-        ctas: [upstateRetreatCta()],
+        ctas: [upcomingRetreatsCta()],
         closingQuestion: "What are you working on in your yoga and fitness journey?",
       }),
       text: [
@@ -115,7 +115,7 @@ export async function POST(req: NextRequest) {
         "",
         "Marci will reach out to confirm the details.",
         "",
-        "While you wait, check out the Upstate Retreat: https://saltyskinsyoga.com/upstate-retreat",
+        "While you wait, explore upcoming retreats: https://saltyskinsyoga.com/#upcoming-retreats",
         "Follow along: instagram.com/saltyskinsretreats or instagram.com/marci_ville",
         "",
         "What are you working on in your yoga and fitness journey?",

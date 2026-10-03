@@ -68,23 +68,10 @@ export default function HomePage() {
           <h2 className="text-center font-serif text-4xl font-light">
             Where Are We Going Next?
           </h2>
-          <div className="mt-14 grid gap-8 md:grid-cols-2 max-w-3xl mx-auto">
-            <RetreatCard
-              eyebrow="United States · Northeast"
-              title="Upstate, NY"
-              date="Date TBA"
-              status="COMING SOON"
-              href="/application"
-              image="/retreat-upstate.jpg"
-            />
-            <RetreatCard
-              eyebrow="Central America · Pacific Coast"
-              title="El Salvador"
-              date="February 6–11, 2027"
-              status="EARLY ACCESS"
-              href="/application"
-              image="/retreat-el-salvador.jpg"
-            />
+          <div className="mx-auto mt-14 max-w-2xl border border-black/10 bg-cream px-6 py-16 text-center md:px-12">
+            <h3 className="font-serif text-3xl font-light md:text-4xl">
+              Coming Soon: Morocco 2027
+            </h3>
           </div>
         </div>
       </section>
@@ -159,41 +146,6 @@ export default function HomePage() {
         </div>
       </section>
     </>
-  );
-}
-
-function RetreatCard({
-  eyebrow,
-  title,
-  date,
-  status,
-  href,
-  image,
-}: {
-  eyebrow: string;
-  title: string;
-  date: string;
-  status: string;
-  href: string;
-  image: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="block overflow-hidden border border-black/10 bg-cream text-center transition-shadow hover:shadow-lg"
-    >
-      <div className="relative aspect-[4/3] w-full">
-        <Image src={image} alt={title} fill className="object-cover" />
-      </div>
-      <div className="p-8">
-        <p className="label-caps mb-3">{eyebrow}</p>
-        <h3 className="font-serif text-2xl">{title}</h3>
-        <p className="mt-1 text-sm text-ink/70">{date}</p>
-        <p className="mt-4 text-xs font-medium tracking-widest2 text-sandDark">
-          {status}
-        </p>
-      </div>
-    </Link>
   );
 }
 

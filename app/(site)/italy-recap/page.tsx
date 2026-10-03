@@ -4,7 +4,7 @@ import ItalyJournal from "./ItalyJournal";
 export const metadata: Metadata = {
   title: "Italy Retreat Recap | Salty Skins",
   description:
-    "Step inside our Italy retreat: terrace yoga, the Path of the Gods hike, poolside wellness, chef-prepared food, and the people who made it unforgettable.",
+    "Step inside our Italy retreat: terrace yoga, poolside wellness, chef-prepared food, and the people who made it unforgettable.",
   openGraph: {
     title: "A little Italy. A lot of soul. | Salty Skins",
     description:

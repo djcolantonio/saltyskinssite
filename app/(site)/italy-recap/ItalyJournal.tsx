@@ -13,7 +13,6 @@ import {
 
 const chapters = [
   { id: "yoga", label: "The practice" },
-  { id: "adventure", label: "The adventure" },
   { id: "poolside", label: "The exhale" },
   { id: "food", label: "The FOOD" },
   { id: "community", label: "The people" },
@@ -227,57 +226,13 @@ export default function ItalyJournal() {
         </div>
       </section>
 
-      <section id="adventure" className="scroll-mt-8 px-6 py-20 md:py-28">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-16">
-          <Photo
-            onOpen={setActivePhoto}
-            id="dsc00768"
-            imageClass="aspect-[4/5]"
-          />
-          <div>
-            <p className="label-caps">02 / The adventure</p>
-            <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl">
-              The Path
-              <br />
-              <span className="italic text-sea">of the Gods.</span>
-            </h2>
-            <p className="mt-6 max-w-md leading-relaxed text-ink/70">
-              The Path of the Gods hike took our movement beyond the mat. A
-              chance to stretch our legs, take in the coastline, and share an
-              adventure together.
-            </p>
-            <p className="mt-4 max-w-md leading-relaxed text-ink/70">
-              Italy gave us plenty of reasons to look up, look out, and explore.
-              The coast was part of the experience, not just the view.
-            </p>
-            <div className="mt-8 border-l border-sand pl-5">
-              <p className="font-serif text-2xl italic text-sea">
-                A little adventure looks good on us.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="mx-auto mt-10 grid max-w-6xl gap-6 md:grid-cols-[1fr_2fr]">
-          <Photo
-            onOpen={setActivePhoto}
-            id="dsc00880"
-            imageClass="aspect-[4/3] md:aspect-[4/5]"
-          />
-          <Photo
-            onOpen={setActivePhoto}
-            id="dsc00885"
-            imageClass="aspect-[4/3] md:aspect-[16/10]"
-          />
-        </div>
-      </section>
-
       <section
         id="poolside"
         className="scroll-mt-8 bg-sea px-6 py-20 text-cream md:py-24"
       >
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="label-caps text-sandLight">03 / The exhale</p>
+            <p className="label-caps text-sandLight">02 / The exhale</p>
             <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl">
               Poolside wellness.
               <br />
@@ -313,7 +268,7 @@ export default function ItalyJournal() {
         <div className="mx-auto max-w-6xl">
           <div className="grid items-end gap-8 md:grid-cols-2">
             <div>
-              <p className="label-caps">04 / At the table</p>
+              <p className="label-caps">03 / At the table</p>
               <h2 className="mt-4 font-serif text-5xl font-light md:text-7xl">
                 And then,
                 <br />
@@ -360,7 +315,7 @@ export default function ItalyJournal() {
       <section id="community" className="scroll-mt-8 px-6 py-20 md:py-28">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-2xl text-center">
-            <p className="label-caps">05 / The people</p>
+            <p className="label-caps">04 / The people</p>
             <h2 className="mt-4 font-serif text-4xl font-light md:text-5xl">
               The best part
               <br />

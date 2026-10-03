@@ -9,7 +9,6 @@ const navLinks = [
 ];
 
 const navLinksAfterRecaps = [
-  { href: "/italy-recap", label: "Italy Recap" },
   { href: "/application", label: "Application" },
   { href: "/private-clients", label: "Private Clients" },
   { href: "/blog", label: "Blog" },
@@ -22,7 +21,6 @@ const navLinksAfterRecaps = [
 // nav stays a single tidy row instead of wrapping into a messy grid.
 const MOBILE_PRIMARY = [
   { href: "/", label: "Home" },
-  { href: "/italy-recap", label: "Italy Recap" },
   { href: "/private-clients", label: "Private Clients" },
   { href: "/about", label: "About" },
   { href: "/blog", label: "Blog" },
@@ -32,7 +30,6 @@ const MOBILE_PRIMARY = [
 const MOBILE_MORE = [
   { href: "/application", label: "Application" },
   { href: "/shop", label: "Shop" },
-  { href: "/el-salvador-recap", label: "El Salvador Recap" },
 ];
 
 export default function Header() {
@@ -82,6 +79,9 @@ export default function Header() {
                 </Link>
               </li>
             ))}
+            <li>
+              <RecapsDropdown />
+            </li>
             <li>
               <MoreDropdown links={MOBILE_MORE} extra={<CartLink />} />
             </li>

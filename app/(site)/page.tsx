@@ -62,16 +62,21 @@ export default function HomePage() {
       </section>
 
       {/* Upcoming Retreats */}
-      <section id="upcoming-retreats" className="bg-sandLight py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="label-caps mb-2 text-center">Upcoming Retreats</p>
-          <h2 className="text-center font-serif text-4xl font-light">
-            Where Are We Going Next?
+      <section id="upcoming-retreats" className="bg-sandLight px-6 py-20 md:py-24">
+        <div className="relative mx-auto max-w-3xl overflow-hidden border border-sand/50 bg-gradient-to-br from-cream via-cream to-sandLight px-8 py-20 text-center md:py-24">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-3 border border-sand/30 md:inset-4" />
+          <svg aria-hidden="true" viewBox="0 0 80 48" fill="none" className="mx-auto mb-8 h-12 w-20 text-sandDark">
+            <path d="M8 40h64M20 40a20 20 0 0 1 40 0M40 4v8M12 16l6 6M68 16l-6 6" stroke="currentColor" strokeWidth="1" strokeLinecap="round" />
+          </svg>
+          <h2 className="font-serif font-light text-ink">
+            <span className="block text-7xl leading-none tracking-tight md:text-8xl">2027</span>{" "}
+            <span className="mt-2 block text-4xl leading-tight md:text-5xl">Retreats</span>{" "}
+            <span className="mt-6 block text-3xl italic text-sea md:text-4xl">Coming Soon</span>
           </h2>
-          <div className="mx-auto mt-14 max-w-2xl border border-black/10 bg-cream px-6 py-16 text-center md:px-12">
-            <h3 className="font-serif text-3xl font-light md:text-4xl">
-              Coming Soon: Morocco 2027
-            </h3>
+          <div aria-hidden="true" className="mx-auto mt-10 flex items-center justify-center gap-3 text-sandDark">
+            <span className="h-px w-12 bg-current opacity-50" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-current" />
+            <span className="h-px w-12 bg-current opacity-50" />
           </div>
         </div>
       </section>

@@ -20,7 +20,7 @@ async function getPost(slug: string): Promise<Post | null> {
         title,
         publishedAt,
         coverImage,
-        body
+        body[]{..., _type == "image" => {"dimensions": asset->metadata.dimensions}}
       }`,
       { slug }
     );
@@ -55,13 +55,14 @@ const portableTextComponents: PortableTextComponents = {
   },
   types: {
     image: ({ value }) => (
-      <div className="relative my-8 aspect-[16/9] w-full overflow-hidden bg-sandLight">
+      <div className="my-8 w-full">
         <Image
           src={urlForImage(value).width(1200).url()}
           alt=""
-          fill
+          width={value.dimensions?.width || 1200}
+          height={value.dimensions?.height || 800}
           sizes="(max-width: 768px) 100vw, 768px"
-          className="object-cover"
+          className="h-auto w-full"
         />
       </div>
     ),

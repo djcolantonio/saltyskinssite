@@ -1,4 +1,4 @@
-import Image from "next/image";
+import BlogImage from "@/components/BlogImage";
 import { notFound } from "next/navigation";
 import { PortableText, type PortableTextComponents } from "next-sanity";
 import { client } from "@/sanity/lib/client";
@@ -19,7 +19,7 @@ async function getPost(slug: string): Promise<Post | null> {
       `*[_type == "post" && slug.current == $slug][0]{
         title,
         publishedAt,
-        coverImage,
+        coverImage{..., "dimensions": asset->metadata.dimensions},
         body[]{..., _type == "image" => {"dimensions": asset->metadata.dimensions}}
       }`,
       { slug }
@@ -55,16 +55,13 @@ const portableTextComponents: PortableTextComponents = {
   },
   types: {
     image: ({ value }) => (
-      <div className="my-8 w-full">
-        <Image
-          src={urlForImage(value).width(1200).url()}
-          alt=""
-          width={value.dimensions?.width || 1200}
-          height={value.dimensions?.height || 800}
-          sizes="(max-width: 768px) 100vw, 768px"
-          className="h-auto w-full"
-        />
-      </div>
+      <BlogImage
+        src={urlForImage({ asset: value.asset }).width(1200).url()}
+        fullSrc={urlForImage({ asset: value.asset }).width(2400).url()}
+        width={value.dimensions?.width || 1200}
+        height={value.dimensions?.height || 800}
+        alt={value.alt || ""}
+      />
     ),
   },
 };
@@ -88,15 +85,13 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       </p>
 
       {post.coverImage && (
-        <div className="relative mt-10 aspect-[16/9] w-full overflow-hidden bg-sandLight">
-          <Image
-            src={urlForImage(post.coverImage).width(1600).height(900).url()}
-            alt=""
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover"
-          />
-        </div>
+        <BlogImage
+          src={urlForImage({ asset: post.coverImage.asset }).width(1200).url()}
+          fullSrc={urlForImage({ asset: post.coverImage.asset }).width(2400).url()}
+          width={post.coverImage.dimensions?.width || 1200}
+          height={post.coverImage.dimensions?.height || 800}
+          alt={post.coverImage.alt || post.title}
+        />
       )}
 
       <div className="mt-10">

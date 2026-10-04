@@ -10,13 +10,15 @@ export default function AboutPage() {
       </h1>
       <p className="mx-auto mt-6 max-w-xl text-center text-ink/80">
         Two soul sisters with a shared love for movement, connection, and
-        sunshine — the hearts behind every Salty Skins retreat.
+        sunshine, the hearts behind every Salty Skins retreat.
       </p>
 
       <div className="relative mx-auto mt-12 aspect-[16/10] w-full max-w-2xl overflow-hidden">
         <Image
-          src="https://ssyogaretreats.com/wp-content/uploads/2025/05/km-sitting-1.jpg"
+          src="/images/about/km-sitting.jpg"
           alt="Karina and Marci"
+          sizes="(max-width: 720px) calc(100vw - 48px), 672px"
+          priority
           fill
           className="object-cover"
         />
@@ -27,7 +29,7 @@ export default function AboutPage() {
         <p className="mt-4 text-ink/80">
           With big smiles and even bigger hearts, Marci and Karina have come
           together to create experiences that go far beyond the mat. Their
-          retreats are equal parts grounding and joyful — where downward dogs
+          retreats are equal parts grounding and joyful, where downward dogs
           meet dance breaks, deep breaths meet belly laughs, and strangers
           become community. Through Yoga, Pilates, and playful exploration,
           they&rsquo;re building a space where awareness, self-love, and a
@@ -42,8 +44,9 @@ export default function AboutPage() {
           <div>
             <div className="relative aspect-[3/4] w-full overflow-hidden">
               <Image
-                src="https://ssyogaretreats.com/wp-content/uploads/2025/05/marci-red.jpg"
+                src="/images/about/marci-red.jpg"
                 alt="Marci Catala"
+                sizes="(max-width: 767px) calc(100vw - 48px), 392px"
                 fill
                 className="object-cover"
               />
@@ -64,8 +67,9 @@ export default function AboutPage() {
           <div>
             <div className="relative aspect-[3/4] w-full overflow-hidden">
               <Image
-                src="https://ssyogaretreats.com/wp-content/uploads/2025/05/karina-prayer.jpeg"
+                src="/images/about/karina-prayer.jpg"
                 alt="Karina Blackstone"
+                sizes="(max-width: 767px) calc(100vw - 48px), 392px"
                 fill
                 className="object-cover"
               />
@@ -78,7 +82,7 @@ export default function AboutPage() {
               Karina is the owner of Hot Yoga 4 You in Rockville Centre, NY,
               always seeking new ways to inspire and uplift her community.
               Though born and raised in New York, her heart has always been
-              tied to El Salvador — her parents&rsquo; homeland. Hosting a
+              tied to El Salvador, her parents&rsquo; homeland. Hosting a
               retreat there has been a lifelong dream fueled by her deep love
               for the country&rsquo;s incredible weather, warm hospitality,
               and grounding energy.
@@ -95,7 +99,7 @@ export default function AboutPage() {
           Join Karina and Marci on one of their upcoming retreats and
           experience the magic for yourself.
         </p>
-        <div className="mt-8 flex justify-center gap-4">
+        <div className="mt-8 flex flex-wrap justify-center gap-4">
           <Link href="/application" className="btn-solid">
             View Retreats
           </Link>

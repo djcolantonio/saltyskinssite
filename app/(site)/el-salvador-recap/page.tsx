@@ -1,37 +1,28 @@
+import type { Metadata } from "next";
 import fs from "fs";
 import path from "path";
-import PhotoGallery from "./PhotoGallery";
-
-function getPhotos() {
-  const dir = path.join(process.cwd(), "public/images/el-salvador");
-  const files = fs.readdirSync(dir);
-  return files
+import ElSalvadorJournal from "./ElSalvadorJournal";
+export const metadata: Metadata = {
+  title: "El Salvador Retreat Recap | Salty Skins",
+  description:
+    "A photo journal of yoga, surfing, Pacific sunsets, poolside rest, shared meals, and connection at our El Salvador retreat.",
+  openGraph: {
+    title: "Salt in the air. Joy in the body. | Salty Skins",
+    description:
+      "Step inside the El Salvador retreat, one shared memory at a time.",
+    images: [
+      {
+        url: "https://saltyskinsyoga.com/images/el-salvador/DSC00744.jpg",
+        alt: "The Salty Skins El Salvador retreat group",
+      },
+    ],
+  },
+};
+export default function ElSalvadorRecapPage() {
+  const allPhotos = fs
+    .readdirSync(path.join(process.cwd(), "public/images/el-salvador"))
     .filter((file) => /\.(jpe?g|png)$/i.test(file))
     .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
     .map((file) => `/images/el-salvador/${file}`);
-}
-
-export default function ElSalvadorRecapPage() {
-  const photos = getPhotos();
-
-  return (
-    <div className="mx-auto max-w-5xl px-6 py-24 text-center">
-      <p className="label-caps">El Salvador Recap</p>
-      <h1 className="mt-4 font-serif text-4xl font-light md:text-5xl">
-        Memories from the Coast
-      </h1>
-      <p className="mx-auto mt-6 max-w-2xl text-ink/80">
-        Every retreat is a unique experience shaped by the people who come
-        together for it. These moments capture the connection, growth, and
-        energy that unfold throughout the journey. From quiet reflection to
-        shared laughter and everything in between, take a look at some of the
-        memories from our El Salvador retreat below!
-      </p>
-      <p className="mt-2 text-sm text-ink/50">
-        Tap a photo to enlarge it, then use the arrows (or swipe/arrow keys)
-        to browse.
-      </p>
-      <PhotoGallery photos={photos} />
-    </div>
-  );
+  return <ElSalvadorJournal allPhotos={allPhotos} />;
 }
